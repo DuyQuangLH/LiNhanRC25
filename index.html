@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thư cuối năm 💌</title>
+  <style>
+    body {
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      background: #ff6f91;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .letter {
+      background: white;
+      color: #333;
+      width: 350px;
+      padding: 25px;
+      border-radius: 15px;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <button class="btn" onclick="openLetter()">📩 Mở thư cuối năm</button>
+
+  <div class="popup" id="popup">
+    <div class="letter">
+      <h2>Gửi bạn 💙</h2>
+      <p>
+        Năm 2025 sắp khép lại rồi.  
+        Cảm ơn vì đã xuất hiện trong cuộc sống của mình,  
+        dù chỉ là một đoạn ngắn hay một chặng dài.
+      </p>
+      <p>
+        Mong rằng năm mới sẽ dịu dàng hơn với bạn ✨
+      </p>
+      <p style="text-align:right;">— Kishou</p>
+      <button onclick="closeLetter()">Đóng</button>
+    </div>
+  </div>
+
+  <script>
+    function openLetter() {
+      document.getElementById("popup").style.display = "flex";
+    }
+    function closeLetter() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>
 
