@@ -5,115 +5,144 @@
 <title>Thư cuối năm 💌</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand:wght@400;600&display=swap');
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  height: 100vh;
-  background: radial-gradient(circle at top, #1b2735, #090a0f);
-  color: #f5f5f5;
-  font-family: 'Quicksand', sans-serif;
-  overflow: hidden;
+  height:100vh;
+  overflow:hidden;
+  font-family:'Quicksand',sans-serif;
+  background: linear-gradient(120deg,#1a2a6c,#b21f1f,#fdbb2d);
+  background-size: 400% 400%;
+  animation: bgMove 18s ease infinite;
+  color:#fff;
 }
 
-.container {
-  width: 100%;
-  height: 100%;
-  position: relative;
+@keyframes bgMove {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
+.container { width:100%; height:100%; position:relative; }
+
+/* COVER */
+.cover {
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background: radial-gradient(circle at top,rgba(255,255,255,0.15),rgba(0,0,0,0.7));
+  z-index:10;
+  cursor:pointer;
+  transition:opacity 1s ease;
+}
+
+.cover.hide { opacity:0; pointer-events:none; }
+
+.envelope {
+  font-size:90px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+}
+
+.cover p {
+  margin-top:20px;
+  opacity:.8;
+  letter-spacing:1px;
+}
+
+/* PAGE */
 .page {
-  position: absolute;
-  inset: 0;
-  padding: 40px 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-  opacity: 0;
-  transform: translateX(40px);
-  transition: all 0.8s ease;
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:24px;
+  opacity:0;
+  transform:translateX(60px);
+  transition:all 1s ease;
 }
 
 .page.active {
-  opacity: 1;
-  transform: translateX(0);
+  opacity:1;
+  transform:translateX(0);
 }
 
 .letter {
-  max-width: 720px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 20px;
-  padding: 32px;
-  box-shadow: 0 0 40px rgba(255,255,255,0.08);
-  backdrop-filter: blur(8px);
-}
-
-h1, h2 {
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 12px;
+  max-width:760px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(10px);
+  border-radius:24px;
+  padding:36px;
+  box-shadow:0 0 60px rgba(255,255,255,0.15);
 }
 
 p {
-  line-height: 1.8;
-  font-size: 17px;
-  margin-bottom: 16px;
+  line-height:1.85;
+  font-size:17px;
+  margin-bottom:16px;
+  text-shadow:0 0 6px rgba(255,255,255,0.15);
 }
 
 .signature {
-  text-align: right;
-  margin-top: 20px;
-  font-style: italic;
-  opacity: 0.9;
+  text-align:right;
+  font-style:italic;
+  margin-top:20px;
 }
+
+/* 2026 background */
+.year {
+  position:absolute;
+  font-size:180px;
+  font-weight:600;
+  color:rgba(255,255,255,0.08);
+  z-index:-1;
+  text-shadow:0 0 40px rgba(255,255,255,0.15);
+}
+
+/* click zones */
+.zone {
+  position:fixed;
+  top:0;
+  width:50%;
+  height:100%;
+}
+
+.left{left:0}
+.right{right:0}
 
 .hint {
-  position: fixed;
-  bottom: 12px;
-  width: 100%;
-  text-align: center;
-  font-size: 13px;
-  opacity: 0.6;
+  position:fixed;
+  bottom:10px;
+  width:100%;
+  text-align:center;
+  font-size:13px;
+  opacity:.6;
 }
 
-.click-zone {
-  position: fixed;
-  top: 0;
-  width: 50%;
-  height: 100%;
-}
-
-.left {
-  left: 0;
-}
-
-.right {
-  right: 0;
-}
-
-/* ✨ sao rơi nhẹ */
+/* stars */
 .star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  opacity: 0.6;
-  animation: fall linear infinite;
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  opacity:.6;
+  animation:fall linear infinite;
 }
 
 @keyframes fall {
-  from {
-    transform: translateY(-10vh);
-  }
-  to {
-    transform: translateY(110vh);
-  }
+  from{transform:translateY(-10vh)}
+  to{transform:translateY(110vh)}
 }
 </style>
 </head>
@@ -122,154 +151,113 @@ p {
 
 <div class="container">
 
-  <!-- PAGE 1 -->
-  <div class="page active">
-    <div class="letter">
-      <p><strong>Đà Nẵng, ngày 31 tháng 12, 2025</strong></p>
-      <p><strong>Gửi: chị LiNhan</strong></p>
-      <p>Phần còn lại của những gì đêm Giáng Sinh nè :&gt;</p>
-    </div>
-  </div>
+<!-- COVER -->
+<div class="cover" onclick="startLetter()">
+  <div class="envelope">✉️</div>
+  <p>Click để mở thư</p>
+</div>
 
-  <!-- PAGE 2 -->
-  <div class="page">
-    <div class="letter">
-      <p>
-        Mới đó mà đã tới hôm cuối của 2025 rùi, nhanh dữ lunn,
-        nhưng cũng là kết thúc năm thứ 2 em có một người chị tuyệt vời zay kkk.
-      </p>
-      <p>
-        Dù đôi lúc chị hay tự ti vào bản thân, vào khả năng của mình,
-        lâu lâu còn hơi tiêu cực nữa,
-        nhưng với em, chị thật sự rất giỏi ấy.
-      </p>
-    </div>
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="letter">
+    <p><strong>Đà Nẵng, ngày 31 tháng 12, 2025</strong></p>
+    <p><strong>Gửi: chị LiNhan</strong></p>
+    <p>Phần còn lại của những gì đêm Giáng Sinh nè :&gt;</p>
   </div>
+</div>
 
-  <!-- PAGE 3 -->
-  <div class="page">
-    <div class="letter">
-      <p>
-        Em bảo có sai đâu mà, cuối cùng chị cũng lằm được đó th kkk,
-        em ngưỡng mộ chị lắm lunn…
-      </p>
-      <p>
-        Nên là chúc chị em sẽ tỏa sáng bản thân hơn trong 2026 nhaaa ✨
-      </p>
-    </div>
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="letter">
+    <p>Mới đó mà đã tới hôm cuối của 2025 rùi, nhanh dữ lunn…</p>
+    <p>Nhưng cũng là kết thúc năm thứ 2 em có một người chị tuyệt vời zay kkk.</p>
   </div>
+</div>
 
-  <!-- PAGE 4 -->
-  <div class="page">
-    <div class="letter">
-      <p>
-        Có đang chắc gần 1000km đi chăng nữa,
-        em thật sự cảm ơn chị đã cùng em trải qua biết bao chuyện vui buồn năm nay,
-      </p>
-      <p>
-        từ lì xì Tết bất ngờ nè,
-        chị mời em chụp kỉ yếu nè,
-        lúc chị ôn ielts, dgnl, cả thptqg nữa…
-      </p>
-    </div>
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="letter">
+    <p>Dù đôi lúc chị hay tự ti, lâu lâu còn hơi tiêu cực nữa…</p>
+    <p>Nhưng với em, chị thật sự rất giỏi ấy.</p>
   </div>
+</div>
 
-  <!-- PAGE 5 -->
-  <div class="page">
-    <div class="letter">
-      <p>
-        Đôi lúc em cũng lì, cũng chọc cho chị giận nữa,
-        nhưng cảm ơn chị luôn quan tâm em,
-        đưa ra nhiều lời khuyên dù đôi khi em hơi “bướng”.
-      </p>
-      <p>
-        Luôn là người lắng nghe em những lúc em yếu đuối,
-        mông lung nhất về bản thân.
-      </p>
-    </div>
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="letter">
+    <p>Em ngưỡng mộ chị lắm lunn…</p>
+    <p>Chúc chị tỏa sáng bản thân hơn trong 2026 nhaaa ✨</p>
   </div>
+</div>
 
-  <!-- PAGE 6 -->
-  <div class="page">
-    <div class="letter">
-      <p>
-        Chị là người đã động viên em,
-        cho em động lực,
-        thật sự em không biết nên cảm ơn như thế nào nữa…
-      </p>
-      <p>
-        Có điều, chị chú tâm sức khỏe của mình nữa nha,
-        đừng cố ráng quá,
-        cũng nên cân bằng nghỉ ngơi bớt nữa nè.
-      </p>
-    </div>
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="letter">
+    <p>Dù cách nhau gần 1000km…</p>
+    <p>Cảm ơn chị vì tất cả những điều năm nay.</p>
   </div>
+</div>
 
-  <!-- PAGE 7 -->
-  <div class="page">
-    <div class="letter">
-      <p>
-        Em cũng nhớ chị nhiều lắm,
-        mong đến Tết lại có cơ hội gặp chị ^^
-      </p>
-      <p>
-        Em cũng sẽ cố hoàn thành ielts
-        còn đi chơi với chị
-        và cũng là giữ lời hứa HCMUS của em nữa.
-      </p>
-    </div>
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="letter">
+    <p>Cảm ơn chị luôn lắng nghe, động viên em…</p>
+    <p>Nhớ giữ gìn sức khỏe nữa nha.</p>
   </div>
+</div>
 
-  <!-- PAGE 8 -->
-  <div class="page">
-    <div class="letter">
-      <p>
-        Chúc chị khởi đầu năm mới 2026 vui vẻ,
-        hạnh phúc, xinh hơn,
-        học giỏi hơn nữa nè!
-      </p>
-      <p><strong>Cố lên ♡</strong></p>
-      <div class="signature">Lê Hữu Duy Quang</div>
-    </div>
+<!-- PAGE 7 -->
+<div class="page">
+  <div class="letter">
+    <p>Em nhớ chị nhiều lắm…</p>
+    <p>Em sẽ cố hoàn thành IELTS và giữ lời hứa HCMUS.</p>
   </div>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page">
+  <div class="year">2026</div>
+  <div class="letter">
+    <p>Chúc chị khởi đầu năm mới 2026 vui vẻ, hạnh phúc, xinh hơn…</p>
+    <p><strong>Cố lên ♡</strong></p>
+    <div class="signature">Lê Hữu Duy Quang</div>
+  </div>
+</div>
 
 </div>
 
-<div class="click-zone left"></div>
-<div class="click-zone right"></div>
-
-<div class="hint">👈 chạm bên trái để quay lại • 👉 chạm bên phải để đọc tiếp</div>
+<div class="zone left"></div>
+<div class="zone right"></div>
+<div class="hint"> quay lại •  đọc tiếp</div>
 
 <script>
-const pages = document.querySelectorAll('.page');
-let index = 0;
+const pages=document.querySelectorAll('.page');
+let index=0;
 
-function showPage(i) {
-  pages.forEach(p => p.classList.remove('active'));
+function showPage(i){
+  pages.forEach(p=>p.classList.remove('active'));
   pages[i].classList.add('active');
 }
 
-document.querySelector('.right').onclick = () => {
-  if (index < pages.length - 1) {
-    index++;
-    showPage(index);
-  }
-};
+function startLetter(){
+  document.querySelector('.cover').classList.add('hide');
+  showPage(0);
+}
 
-document.querySelector('.left').onclick = () => {
-  if (index > 0) {
-    index--;
-    showPage(index);
-  }
-};
+document.querySelector('.right').onclick=()=>{
+  if(index<pages.length-1){index++;showPage(index);}
+}
+document.querySelector('.left').onclick=()=>{
+  if(index>0){index--;showPage(index);}
+}
 
-/* ✨ tạo sao rơi */
-for (let i = 0; i < 40; i++) {
-  const star = document.createElement('div');
-  star.className = 'star';
-  star.style.left = Math.random() * 100 + 'vw';
-  star.style.animationDuration = 3 + Math.random() * 5 + 's';
-  document.body.appendChild(star);
+/* stars */
+for(let i=0;i<50;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  s.style.left=Math.random()*100+'vw';
+  s.style.animationDuration=3+Math.random()*6+'s';
+  document.body.appendChild(s);
 }
 </script>
 
