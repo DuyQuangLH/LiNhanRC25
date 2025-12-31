@@ -1,81 +1,277 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Thư cuối năm 💌</title>
-  <style>
-    body {
-      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Segoe UI', sans-serif;
-      color: white;
-    }
+<meta charset="UTF-8">
+<title>Thư cuối năm 💌</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .btn {
-      padding: 15px 30px;
-      font-size: 18px;
-      background: #ff6f91;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      color: white;
-    }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand:wght@400;600&display=swap');
 
-    .popup {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .letter {
-      background: white;
-      color: #333;
-      width: 350px;
-      padding: 25px;
-      border-radius: 15px;
-      animation: fadeIn 0.8s ease;
-    }
+body {
+  height: 100vh;
+  background: radial-gradient(circle at top, #1b2735, #090a0f);
+  color: #f5f5f5;
+  font-family: 'Quicksand', sans-serif;
+  overflow: hidden;
+}
 
-    @keyframes fadeIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-  </style>
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.page {
+  position: absolute;
+  inset: 0;
+  padding: 40px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.8s ease;
+}
+
+.page.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.letter {
+  max-width: 720px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 0 40px rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 12px;
+}
+
+p {
+  line-height: 1.8;
+  font-size: 17px;
+  margin-bottom: 16px;
+}
+
+.signature {
+  text-align: right;
+  margin-top: 20px;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.hint {
+  position: fixed;
+  bottom: 12px;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.click-zone {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100%;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+/* ✨ sao rơi nhẹ */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  opacity: 0.6;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-10vh);
+  }
+  to {
+    transform: translateY(110vh);
+  }
+}
+</style>
 </head>
 
 <body>
-  <button class="btn" onclick="openLetter()">📩 Mở thư cuối năm</button>
 
-  <div class="popup" id="popup">
+<div class="container">
+
+  <!-- PAGE 1 -->
+  <div class="page active">
     <div class="letter">
-      <h2>Gửi bạn 💙</h2>
-      <p>
-        Năm 2025 sắp khép lại rồi.  
-        Cảm ơn vì đã xuất hiện trong cuộc sống của mình,  
-        dù chỉ là một đoạn ngắn hay một chặng dài.
-      </p>
-      <p>
-        Mong rằng năm mới sẽ dịu dàng hơn với bạn ✨
-      </p>
-      <p style="text-align:right;">— Kishou</p>
-      <button onclick="closeLetter()">Đóng</button>
+      <p><strong>Đà Nẵng, ngày 31 tháng 12, 2025</strong></p>
+      <p><strong>Gửi: chị LiNhan</strong></p>
+      <p>Phần còn lại của những gì đêm Giáng Sinh nè :&gt;</p>
     </div>
   </div>
 
-  <script>
-    function openLetter() {
-      document.getElementById("popup").style.display = "flex";
-    }
-    function closeLetter() {
-      document.getElementById("popup").style.display = "none";
-    }
-  </script>
+  <!-- PAGE 2 -->
+  <div class="page">
+    <div class="letter">
+      <p>
+        Mới đó mà đã tới hôm cuối của 2025 rùi, nhanh dữ lunn,
+        nhưng cũng là kết thúc năm thứ 2 em có một người chị tuyệt vời zay kkk.
+      </p>
+      <p>
+        Dù đôi lúc chị hay tự ti vào bản thân, vào khả năng của mình,
+        lâu lâu còn hơi tiêu cực nữa,
+        nhưng với em, chị thật sự rất giỏi ấy.
+      </p>
+    </div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="page">
+    <div class="letter">
+      <p>
+        Em bảo có sai đâu mà, cuối cùng chị cũng lằm được đó th kkk,
+        em ngưỡng mộ chị lắm lunn…
+      </p>
+      <p>
+        Nên là chúc chị em sẽ tỏa sáng bản thân hơn trong 2026 nhaaa ✨
+      </p>
+    </div>
+  </div>
+
+  <!-- PAGE 4 -->
+  <div class="page">
+    <div class="letter">
+      <p>
+        Có đang chắc gần 1000km đi chăng nữa,
+        em thật sự cảm ơn chị đã cùng em trải qua biết bao chuyện vui buồn năm nay,
+      </p>
+      <p>
+        từ lì xì Tết bất ngờ nè,
+        chị mời em chụp kỉ yếu nè,
+        lúc chị ôn ielts, dgnl, cả thptqg nữa…
+      </p>
+    </div>
+  </div>
+
+  <!-- PAGE 5 -->
+  <div class="page">
+    <div class="letter">
+      <p>
+        Đôi lúc em cũng lì, cũng chọc cho chị giận nữa,
+        nhưng cảm ơn chị luôn quan tâm em,
+        đưa ra nhiều lời khuyên dù đôi khi em hơi “bướng”.
+      </p>
+      <p>
+        Luôn là người lắng nghe em những lúc em yếu đuối,
+        mông lung nhất về bản thân.
+      </p>
+    </div>
+  </div>
+
+  <!-- PAGE 6 -->
+  <div class="page">
+    <div class="letter">
+      <p>
+        Chị là người đã động viên em,
+        cho em động lực,
+        thật sự em không biết nên cảm ơn như thế nào nữa…
+      </p>
+      <p>
+        Có điều, chị chú tâm sức khỏe của mình nữa nha,
+        đừng cố ráng quá,
+        cũng nên cân bằng nghỉ ngơi bớt nữa nè.
+      </p>
+    </div>
+  </div>
+
+  <!-- PAGE 7 -->
+  <div class="page">
+    <div class="letter">
+      <p>
+        Em cũng nhớ chị nhiều lắm,
+        mong đến Tết lại có cơ hội gặp chị ^^
+      </p>
+      <p>
+        Em cũng sẽ cố hoàn thành ielts
+        còn đi chơi với chị
+        và cũng là giữ lời hứa HCMUS của em nữa.
+      </p>
+    </div>
+  </div>
+
+  <!-- PAGE 8 -->
+  <div class="page">
+    <div class="letter">
+      <p>
+        Chúc chị khởi đầu năm mới 2026 vui vẻ,
+        hạnh phúc, xinh hơn,
+        học giỏi hơn nữa nè!
+      </p>
+      <p><strong>Cố lên ♡</strong></p>
+      <div class="signature">— Em</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="click-zone left"></div>
+<div class="click-zone right"></div>
+
+<div class="hint">👈 chạm bên trái để quay lại • 👉 chạm bên phải để đọc tiếp</div>
+
+<script>
+const pages = document.querySelectorAll('.page');
+let index = 0;
+
+function showPage(i) {
+  pages.forEach(p => p.classList.remove('active'));
+  pages[i].classList.add('active');
+}
+
+document.querySelector('.right').onclick = () => {
+  if (index < pages.length - 1) {
+    index++;
+    showPage(index);
+  }
+};
+
+document.querySelector('.left').onclick = () => {
+  if (index > 0) {
+    index--;
+    showPage(index);
+  }
+};
+
+/* ✨ tạo sao rơi */
+for (let i = 0; i < 40; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.left = Math.random() * 100 + 'vw';
+  star.style.animationDuration = 3 + Math.random() * 5 + 's';
+  document.body.appendChild(star);
+}
+</script>
+
 </body>
 </html>
-
